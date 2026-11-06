@@ -1,0 +1,32 @@
+{
+  "pages": {
+    "en": {
+      "Abschlussbewertungen": "Final ratings",
+      "Aktiv": "Active",
+      "Aktiv setzen": "Set active",
+      "Aktive Interaktion": "Active interaction",
+      "Bearbeiten": "Edit",
+      "Bei „{0}“ ist noch keine Interaktion aktiv — Teilnehmende sehen derzeit keine Frage.": "No interaction is active for \"{0}\" yet — participants currently see no question.",
+      "Diese Veranstaltung hat noch keine Interaktionen — füge die erste Frage hinzu.": "This event has no interactions yet — add the first question.",
+      "Erste Interaktion aktivieren": "Activate first interaction",
+      "Erste Veranstaltung anlegen": "Create first event",
+      "Interaktion": "Interaction",
+      "KI-Antwort gespeichert": "AI response saved",
+      "Lege deine erste Veranstaltung an, dann kann es losgehen.": "Create your first event, then you're ready to go.",
+      "Neue Veranstaltung": "New event",
+      "Noch keine Abschlussbewertung — sie kommt, wenn die Teilnehmenden am Ende bewerten.": "No final rating yet — it arrives when participants rate at the end.",
+      "Noch keine Veranstaltung. Lege eine an und bereite danach die Fragen für deine Teilnehmenden vor.": "No events yet. Create one, then prepare the questions for your participants.",
+      "Ohne Datum": "No date",
+      "Ohne Kürzel": "No abbreviation",
+      "QR-Code": "QR code",
+      "Zusammenfassen": "Summarize",
+      "keine": "none",
+      "offen": "open",
+      "Ø Bewertung": "Ø rating",
+      "„{0}“ ist jetzt aktiv": "\"{0}\" is now active",
+      "„{0}“ wartet auf die erste aktive Interaktion.": "\"{0}\" is waiting for the first active interaction.",
+      "„{0}“: Gerade läuft „{1}“ — {2} bisher.": "\"{0}\": \"{1}\" is currently running — {2} so far."
+    }
+  },
+  "v": 1
+}
