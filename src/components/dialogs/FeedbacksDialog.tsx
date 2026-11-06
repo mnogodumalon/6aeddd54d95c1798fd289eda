@@ -343,7 +343,7 @@ export function FeedbacksDialog({ open, onClose, onSubmit, defaultValues, record
         <Label htmlFor="interaktion">{labelFor('interaktion')} <span className="text-destructive" aria-hidden="true">*</span></Label>
         <Combobox
           id="interaktion"
-          placeholder="Welche Interaktion?"
+          placeholder=""
           items={interaktionenListAll.map(r => ({
             id: r.record_id,
             label: String(r.fields.frage ?? r.record_id),
@@ -363,7 +363,7 @@ export function FeedbacksDialog({ open, onClose, onSubmit, defaultValues, record
         <Label htmlFor="kuerzel">{labelFor('kuerzel')}</Label>
         <Input
           id="kuerzel"
-          placeholder="z. B. MK"
+          placeholder=""
           value={fields.kuerzel ?? ''}
           onChange={e => setFields(f => ({ ...f, kuerzel: e.target.value }))}
         />
@@ -374,7 +374,7 @@ export function FeedbacksDialog({ open, onClose, onSubmit, defaultValues, record
         <Label htmlFor="feedback_text">{labelFor('feedback_text')} <span className="text-destructive" aria-hidden="true">*</span></Label>
         <Textarea
           id="feedback_text"
-          placeholder="Was ist dir aufgefallen?"
+          placeholder=""
           value={fields.feedback_text ?? ''}
           onChange={e => setFields(f => ({ ...f, feedback_text: e.target.value }))}
           rows={3}
@@ -389,7 +389,7 @@ export function FeedbacksDialog({ open, onClose, onSubmit, defaultValues, record
         <Label htmlFor="absende_kennung">{labelFor('absende_kennung')}</Label>
         <Input
           id="absende_kennung"
-          placeholder="z. B. FB-2026-001"
+          placeholder=""
           value={fields.absende_kennung ?? ''}
           onChange={e => setFields(f => ({ ...f, absende_kennung: e.target.value }))}
         />

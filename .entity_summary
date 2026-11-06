@@ -52,26 +52,25 @@ There is NO `@/config/appIds`, no `@/config/lookupOptions` and no
 createRecordUrl from the service. Note the lowercase `l` in the service path.
 
 - Veranstaltungen (veranstaltungen): aktive_interaktion^[applookup/select], titel!^[string/text], datum^[date/datetimeminute], beschreibung^[string/textarea]
-  ≡ 3 records at build time
+  ≡ 4 records at build time
   · datum: A specific moment in time consisting of year, month, day, hour and minute (or `null`/`None`) The field value will be a string in the format `<YYYY>-<MM>-<DD>T<HH>:<MM>` (or `null`/`None`). For example: `2000-02-29T11:30`. For `POST`/`PUT`/`PATCH` requests the REST API uses a liberal parsing approach so that strings like `2026`, `February 29, 2000 12:34 MEST`, `letztes Jahr` etc. will be accepted as value datetime values. However this runs the risk of parsing ambiguous values incorrectly. To ensure reliable parsing it is best to use the canonical format specified above.
   ◈ aktive_interaktion → record (interaktionen, EntitySelectStep)
   ⚙ getVeranstaltungen() · getVeranstaltungenEntry(id) · createVeranstaltungenEntry(fields) · updateVeranstaltungenEntry(id, fields) · deleteVeranstaltungenEntry(id) · queryVeranstaltungen({ filter, orderby, limit, offset, fields }) · countVeranstaltungen(filter?)
   ✚ EnrichedVeranstaltungen adds ONLY aktive_interaktionName — via enrichVeranstaltungen(veranstaltungen, { interaktionenMap }), all maps required
   → aktive_interaktion links to app_id 6aeddd436ce9be16cc4568af
 - Interaktionen (interaktionen): reihenfolge!^[number], frage!^[string/textarea], erlaeuterung^[string/textarea], vorprompt^[string/textarea], endprompt[string/textarea], zusammenfassung[string/textarea] "Zusammenfassungstext", ki_antwort[string/textarea] "Antwort der KI", veranstaltung!^[applookup/select]
-  ≡ 3 records at build time
+  ≡ 5 records at build time
   ◈ veranstaltung → record (veranstaltungen, EntitySelectStep)
   ⚙ getInteraktionen() · getInteraktionenEntry(id) · createInteraktionenEntry(fields) · updateInteraktionenEntry(id, fields) · deleteInteraktionenEntry(id) · queryInteraktionen({ filter, orderby, limit, offset, fields }) · countInteraktionen(filter?)
   ✚ EnrichedInteraktionen adds ONLY veranstaltungName — via enrichInteraktionen(interaktionen, { veranstaltungenMap }), all maps required
   → veranstaltung links to app_id 6aeddd3ca7d0815337b5debc
 - Feedbacks (feedbacks): interaktion!^[applookup/select], kuerzel^[string/text], feedback_text!^[string/textarea] "Dein Feedback", absende_kennung^[string/text]
-  ≡ 3 records at build time
+  ≡ 10 records at build time
   ◈ interaktion → record (interaktionen, EntitySelectStep)
   ⚙ getFeedbacks() · getFeedback(id) · createFeedback(fields) · updateFeedback(id, fields) · deleteFeedback(id) · queryFeedbacks({ filter, orderby, limit, offset, fields }) · countFeedbacks(filter?)
   ✚ EnrichedFeedbacks adds ONLY interaktionName — via enrichFeedbacks(feedbacks, { interaktionenMap }), all maps required
   → interaktion links to app_id 6aeddd436ce9be16cc4568af
 - Abschlussbewertungen (abschlussbewertungen): kuerzel^[string/text], sterne!^[lookup/radio: stern_1=1 Stern|stern_2=2 Sterne|stern_3=3 Sterne|stern_4=4 Sterne|stern_5=5 Sterne] "Bewertung", kommentar^[string/textarea], email^[string/email] "E-Mail-Adresse", einwilligung[bool] "Ich willige ein, dass meine E-Mail-Adresse für die persönliche Auswertung gespeichert wird.", veranstaltung!^[applookup/select]
-  ≡ 3 records at build time
   ◈ sterne → choice (5 options, ChoiceGroup) · veranstaltung → record (veranstaltungen, EntitySelectStep)
   ⚙ getAbschlussbewertungen() · getAbschlussbewertungenEntry(id) · createAbschlussbewertungenEntry(fields) · updateAbschlussbewertungenEntry(id, fields) · deleteAbschlussbewertungenEntry(id) · queryAbschlussbewertungen({ filter, orderby, limit, offset, fields }) · countAbschlussbewertungen(filter?)
   ✚ EnrichedAbschlussbewertungen adds ONLY veranstaltungName — via enrichAbschlussbewertungen(abschlussbewertungen, { veranstaltungenMap }), all maps required

@@ -354,7 +354,7 @@ export function AbschlussbewertungenDialog({ open, onClose, onSubmit, defaultVal
         <Label htmlFor="kuerzel">{labelFor('kuerzel')}</Label>
         <Input
           id="kuerzel"
-          placeholder="z. B. MK-01"
+          placeholder=""
           value={fields.kuerzel ?? ''}
           onChange={e => setFields(f => ({ ...f, kuerzel: e.target.value }))}
         />
@@ -440,7 +440,7 @@ export function AbschlussbewertungenDialog({ open, onClose, onSubmit, defaultVal
         <Label htmlFor="kommentar">{labelFor('kommentar')}</Label>
         <Textarea
           id="kommentar"
-          placeholder="Was hat dir gefallen?"
+          placeholder=""
           value={fields.kommentar ?? ''}
           onChange={e => setFields(f => ({ ...f, kommentar: e.target.value }))}
           rows={3}
@@ -454,7 +454,7 @@ export function AbschlussbewertungenDialog({ open, onClose, onSubmit, defaultVal
           id="email"
           type="email"
           inputMode="email"
-          placeholder="z. B. name@beispiel.de"
+          placeholder=""
           value={fields.email ?? ''}
           onChange={e => setFields(f => ({ ...f, email: e.target.value }))}
         />
@@ -478,7 +478,7 @@ export function AbschlussbewertungenDialog({ open, onClose, onSubmit, defaultVal
         <Label htmlFor="veranstaltung">{labelFor('veranstaltung')} <span className="text-destructive" aria-hidden="true">*</span></Label>
         <Combobox
           id="veranstaltung"
-          placeholder="Welche Veranstaltung?"
+          placeholder=""
           items={veranstaltungenListAll.map(r => ({
             id: r.record_id,
             label: String(r.fields.titel ?? r.record_id),

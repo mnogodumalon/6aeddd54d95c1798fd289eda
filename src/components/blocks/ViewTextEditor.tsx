@@ -37,6 +37,9 @@ export interface ViewTextEditorProps {
   compose?: () => string | null;
   /** A sentence while a source failed to load — no compose, no save (EF-19), the sentence shows. */
   blocked?: string | null;
+  /** The text field's minimum height (default 50vh; with several editors on one view the
+   *  placeholder passes a smaller one — EF-28: two at 50vh overlapped the first one's buttons). */
+  minHeight?: string;
   /** Text size; the default is read from across a room. */
   style?: React.CSSProperties;
   className?: string;
@@ -44,10 +47,12 @@ export interface ViewTextEditorProps {
 
 type Phase = 'saved' | 'saving' | 'failed' | 'dirty';
 
-export function ViewTextEditor({ field, recordId, value, save, delayMs = 800, compose, blocked, style, className }: ViewTextEditorProps) {
+export function ViewTextEditor({ field, recordId, value, save, delayMs = 800, compose, blocked, minHeight = '50vh', style, className }: ViewTextEditorProps) {
   const [text, setText] = useState(value ?? '');
   const [phase, setPhase] = useState<Phase>('saved');
   const [copied, setCopied] = useState(false);
+  const [copyManual, setCopyManual] = useState(false);
+  const area = useRef<HTMLTextAreaElement | null>(null);
   const pending = useRef(false);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const last = useRef(value ?? '');
@@ -123,18 +128,26 @@ export function ViewTextEditor({ field, recordId, value, save, delayMs = 800, co
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(text);
+      setCopyManual(false);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-    } catch { /* a browser without clipboard access — the text stays selectable */ }
+    } catch {
+      // no clipboard access (http, an old browser, a denied permission) — never silent (EF-28):
+      // the text is selected and the person is told to copy it
+      area.current?.focus();
+      area.current?.select();
+      setCopyManual(true);
+    }
   };
 
   return (
-    <div className={`flex min-h-0 flex-1 flex-col gap-3 ${className ?? ''}`} data-view-edit={field}>
+    <div className={`flex shrink-0 flex-col gap-3 ${className ?? ''}`} data-view-edit={field}>
       <textarea
+        ref={area}
         value={text}
         onChange={e => onChange(e.target.value)}
-        className="min-h-[50vh] w-full flex-1 resize-none rounded-2xl border border-input bg-card p-6 leading-relaxed outline-none focus-visible:ring-2 focus-visible:ring-ring"
-        style={style ?? { fontSize: 'clamp(1.25rem, 2.6vh, 2.75rem)' }}
+        className="w-full resize-y rounded-2xl border border-input bg-card p-6 leading-relaxed outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        style={{ minHeight, ...(style ?? { fontSize: 'clamp(1.25rem, 2.6vh, 2.75rem)' }) }}
         aria-label={field}
       />
       {blocked && (
@@ -150,6 +163,7 @@ export function ViewTextEditor({ field, recordId, value, save, delayMs = 800, co
         <Button type="button" variant="outline" onClick={() => { void copy(); }} data-view-copy>
           {copied ? t('vte_copied') : t('vte_copy')}
         </Button>
+        {copyManual && <span role="status" data-view-copy-manual>{t('vte_copy_manual')}</span>}
         <span role="status" aria-live="polite" data-view-save={phase}
           className={phase === 'failed' ? 'text-destructive' : 'text-muted-foreground'}>
           {phase === 'failed' ? (

@@ -43,9 +43,9 @@ export interface IntentLink {
 
 export const INTENTS: IntentLink[] = [
   // <custom:intents>
-  { path: '/intents/interaktion-aktiv-setzen', label: { de: 'Interaktion aktiv setzen', en: 'Activate interaction' }, icon: IconPlayerPlay, description: 'Interaktion einer Veranstaltung aktiv setzen und QR-Code öffnen' },
-  { path: '/intents/feedbacks-zusammenfassen', label: { de: 'Feedbacks zusammenfassen', en: 'Summarise feedback' }, icon: IconListDetails, description: 'Feedbacks einer Interaktion zu einem bearbeitbaren Text zusammenführen' },
-  { path: '/intents/ki-antwort-speichern', label: { de: 'Antwort der KI speichern', en: 'Save AI answer' }, icon: IconRobot, description: 'Antwort des Chatbots bei der Interaktion einfügen und speichern' },
+  { path: '/intents/interaktion-aktiv-setzen', label: { de: 'Interaktion aktiv setzen', en: 'Activate interaction' }, icon: IconPlayerPlay, description: { de: 'Interaktion einer Veranstaltung aktiv setzen und QR-Code öffnen', en: 'Set an event\'s interaction as active and open QR code' } },
+  { path: '/intents/feedbacks-zusammenfassen', label: { de: 'Feedbacks zusammenfassen', en: 'Summarise feedback' }, icon: IconListDetails, description: { de: 'Feedbacks einer Interaktion zu einem bearbeitbaren Text zusammenführen', en: 'Merge an interaction\'s feedback into an editable text' } },
+  { path: '/intents/ki-antwort-speichern', label: { de: 'Antwort der KI speichern', en: 'Save AI answer' }, icon: IconRobot, description: { de: 'Antwort des Chatbots bei der Interaktion einfügen und speichern', en: 'Insert and save the chatbot\'s response for the interaction' } },
   // </custom:intents>
 ];
 
@@ -65,5 +65,5 @@ export const INTENTS_PENDING = false;
  * pulsing "werden erstellt …" in every deployed Phase-1 bundle forever — no
  * code path redeploys Phase 1 without the flag (live 03.09.2026).
  */
-export const INTENTS_PENDING_SINCE: string | null = '2026-11-06T14:01:45+00:00';
+export const INTENTS_PENDING_SINCE: string | null = null;
 export const PENDING_MAX_MINUTES = 30;

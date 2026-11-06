@@ -344,7 +344,7 @@ export function VeranstaltungenDialog({ open, onClose, onSubmit, defaultValues, 
         <Label htmlFor="aktive_interaktion">{labelFor('aktive_interaktion')}</Label>
         <Combobox
           id="aktive_interaktion"
-          placeholder="Welche Interaktion läuft?"
+          placeholder=""
           items={interaktionenListAll.map(r => ({
             id: r.record_id,
             label: String(r.fields.frage ?? r.record_id),
@@ -361,7 +361,7 @@ export function VeranstaltungenDialog({ open, onClose, onSubmit, defaultValues, 
         <Label htmlFor="titel">{labelFor('titel')} <span className="text-destructive" aria-hidden="true">*</span></Label>
         <Input
           id="titel"
-          placeholder="z. B. Sommerfest 2026"
+          placeholder=""
           value={fields.titel ?? ''}
           onChange={e => setFields(f => ({ ...f, titel: e.target.value }))}
           required
@@ -376,7 +376,7 @@ export function VeranstaltungenDialog({ open, onClose, onSubmit, defaultValues, 
         <Label htmlFor="datum">{labelFor('datum')}</Label>
         <DatePicker
           id="datum"
-          placeholder="Wann findet es statt?"
+          placeholder=""
           mode="datetime"
           value={fields.datum ?? null}
           onChange={v => setFields(f => ({ ...f, datum: v ?? undefined }))}
@@ -388,7 +388,7 @@ export function VeranstaltungenDialog({ open, onClose, onSubmit, defaultValues, 
         <Label htmlFor="beschreibung">{labelFor('beschreibung')}</Label>
         <Textarea
           id="beschreibung"
-          placeholder="Worum geht es bei der Veranstaltung?"
+          placeholder=""
           value={fields.beschreibung ?? ''}
           onChange={e => setFields(f => ({ ...f, beschreibung: e.target.value }))}
           rows={3}

@@ -727,7 +727,7 @@ if (gridIdx >= 0) {
   }
   // 27b. EF-26 (Bau 16): two public pages open per event — the QR took the FIRST (the rating page)
   // instead of the feedback page. With several link pages for one entity every QR names its page.
-  const LINK_PAGES = {"veranstaltungen": ["abschlussbewertung", "feedback-geben"]};
+  const LINK_PAGES = {"veranstaltungen": ["feedback-geben"]};
   const noPage = [];
   for (const file of files) {
     const text = file === FILE ? code : stripCommentsKeepLayout(readFileSync(file, 'utf8'));

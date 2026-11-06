@@ -364,6 +364,7 @@ export const UI_CATALOG: Record<CoreLocale, Record<string, string>> = {
     "vte_failed": "Nicht gespeichert — erneut versuchen",
     "vte_copy": "Text kopieren",
     "vte_copied": "Kopiert",
+    "vte_copy_manual": "Der Text ist markiert — bitte mit Strg+C (⌘+C) kopieren.",
     "vte_recompose": "Neu zusammenführen",
     "vte_recompose_confirm": "Wirklich überschreiben? Noch einmal klicken",
     "ss_read_failed": "Die Daten für „{what}“ konnten nicht geladen werden — Bestätigen ist gesperrt, damit nichts mit einer leeren Liste gespeichert wird. Bitte die Seite neu laden.",
@@ -1171,6 +1172,7 @@ export const UI_CATALOG: Record<CoreLocale, Record<string, string>> = {
     "vte_failed": "Not saved — try again",
     "vte_copy": "Copy text",
     "vte_copied": "Copied",
+    "vte_copy_manual": "The text is selected — please copy it with Ctrl+C (⌘+C).",
     "vte_recompose": "Compose again",
     "vte_recompose_confirm": "Really overwrite? Click again",
     "ss_read_failed": "The data for “{what}” could not be loaded — confirming is locked so nothing is saved from an empty list. Please reload the page.",
@@ -1777,19 +1779,19 @@ export const LABELS: Record<CoreLocale, LabelBundle> = {
           "erlaeuterung": "Explanation",
           "vorprompt": "Pre-prompt",
           "endprompt": "Final prompt",
-          "zusammenfassung": "Summary Text",
-          "ki_antwort": "AI Response",
+          "zusammenfassung": "Summary text",
+          "ki_antwort": "AI response",
           "veranstaltung": "Event"
         },
         "lookups": {}
       },
       "feedbacks": {
-        "name": "Feedbacks",
+        "name": "Feedback",
         "app_id": "6aeddd435245b8a408d21886",
         "fields": {
           "interaktion": "Interaction",
           "kuerzel": "Abbreviation",
-          "feedback_text": "Your Feedback",
+          "feedback_text": "Your feedback",
           "absende_kennung": "Submitter ID"
         },
         "lookups": {}
@@ -1802,7 +1804,7 @@ export const LABELS: Record<CoreLocale, LabelBundle> = {
           "sterne": "Rating",
           "kommentar": "Comment",
           "email": "Email address",
-          "einwilligung": "I consent to my email address being stored for the personal evaluation.",
+          "einwilligung": "I consent to my email address being stored for personal evaluation.",
           "veranstaltung": "Event"
         },
         "lookups": {
